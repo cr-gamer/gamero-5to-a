@@ -1,0 +1,534 @@
+/* =========================================================
+   1. RESET BÁSICO Y VARIABLES DE ESTILO
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0a0e17;            /* Negro noche/carbón profundo */
+    --bg-card: #141b2d;            /* Azul/Negro formal para tarjetas */
+    --primary-blue: #0066ff;       /* Azul eléctrico potente */
+    --primary-glow: #00d2ff;       /* Azul neón brillante */
+    --accent-gold: #ffb703;        /* Acento cálido para avisos/detalles */
+    --text-primary: #ffffff;       /* Texto blanco principal */
+    --text-secondary: #a0aec0;     /* Texto secundario gris claro */
+    --border-color: rgba(0, 102, 255, 0.2);
+    --shadow-glow: 0 0 25px rgba(0, 102, 255, 0.4);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   2. ENCABEZADO Y NAVEGACIÓN (HEADER)
+   ========================================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-glow));
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.6);
+}
+
+.brand-name {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, var(--primary-glow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0, 102, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
+}
+
+/* =========================================================
+   3. SECCIÓN HERO (ESTILO ÉPICO / LLAMATIVO / "DIABLO")
+   ========================================================= */
+.hero-container {
+    position: relative;
+    background: radial-gradient(circle at 70% 30%, #102a45 0%, #0a0e17 70%);
+    padding: 6rem 2rem;
+    border-bottom: 2px solid var(--primary-blue);
+    box-shadow: inset 0 -50px 50px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+/* EFECTO DE LUZ DE FONDO */
+.hero-container::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-wrapper {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* LADO IZQUIERDO DEL HERO */
+.badge {
+    background: rgba(0, 102, 255, 0.15);
+    color: var(--primary-glow);
+    border: 1px solid var(--primary-glow);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.hero-text-content h1 {
+    font-size: 4.2rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 30%, var(--primary-glow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(0, 102, 255, 0.6));
+    margin-bottom: 0.8rem;
+}
+
+.hero-text-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--primary-blue);
+    padding-left: 12px;
+}
+
+.hero-text-content p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+}
+
+/* BOTONES LLAMATIVOS */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue), #0040b0);
+    color: var(--text-primary);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+    border: 1px solid var(--primary-glow);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-glow), var(--primary-blue));
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 35px rgba(0, 210, 255, 0.8);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-glow);
+    background: rgba(0, 102, 255, 0.1);
+    color: var(--primary-glow);
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+}
+
+/* MARCO Y MARAVILLA VISUAL DE LA IMAGEN EN EL HERO */
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 0 30px rgba(0, 102, 255, 0.5), inset 0 0 15px rgba(0, 210, 255, 0.3);
+    transition: all 0.5s ease;
+}
+
+.image-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+}
+
+.hero-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.95) contrast(1.1);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.image-frame:hover {
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 50px rgba(0, 210, 255, 0.8);
+    transform: scale(1.02) rotate(1deg);
+}
+
+.image-frame:hover .hero-main-img {
+    transform: scale(1.08);
+    filter: brightness(1.05) contrast(1.15);
+}
+
+/* =========================================================
+   4. AVISO DE RESPONSABILIDAD / RECOMENDACIÓN
+   ========================================================= */
+.disclaimer-banner {
+    background: rgba(20, 27, 45, 0.8);
+    border: 1px solid rgba(255, 183, 3, 0.4);
+    border-left: 6px solid var(--accent-gold);
+    padding: 1.2rem 2rem;
+    margin: 2.5rem auto 0;
+    max-width: 1250px;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.disclaimer-banner em {
+    color: var(--accent-gold);
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* =========================================================
+   5. SECCIONES GENERALES
+   ========================================================= */
+.section {
+    padding: 5rem 2rem;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-glow));
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* =========================================================
+   6. SECCIÓN 1: CARDS DE PLANES (4 CARDS)
+   ========================================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+}
+
+.card-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background-color: #1e293b;
+    border-bottom: 2px solid rgba(0, 102, 255, 0.3);
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.card-body h3 {
+    color: var(--primary-glow);
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.card-body p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* =========================================================
+   7. SECCIÓN 2: BENEFICIOS
+   ========================================================= */
+.beneficios-section {
+    background: rgba(20, 27, 45, 0.5);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 4rem 2rem;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.beneficio-box {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    background: var(--bg-card);
+    transition: all 0.3s ease;
+}
+
+.beneficio-box:hover {
+    background: #1a233a;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+.beneficio-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 8px var(--primary-blue));
+}
+
+.beneficio-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+}
+
+.beneficio-box p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+/* =========================================================
+   8. SECCIÓN 3: GALERÍA DE FOTOS (3 IMÁGENES)
+   ========================================================= */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.galeria-item {
+    height: 270px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.9);
+}
+
+.galeria-item img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+}
+
+/* =========================================================
+   9. PIE DE PÁGINA (FOOTER FORMAL)
+   ========================================================= */
+.footer {
+    background: #06090e;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+    border-top: 2px solid var(--primary-blue);
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+}
+
+.footer p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+}
+
+.footer strong {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   10. RESPONSIVO (DISEÑO ADAPTABLE A PANTALLAS MÓVILES)
+   ========================================================= */
+@media (max-width: 992px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text-content h1 {
+        font-size: 3.2rem;
+    }
+
+    .hero-text-content h2 {
+        border-left: none;
+        border-bottom: 3px solid var(--primary-blue);
+        display: inline-block;
+        padding-bottom: 6px;
+        padding-left: 0;
+    }
+
+    .hero-text-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .image-frame {
+        height: 320px;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem;
+    }
+
+    .hero-text-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn-hero {
+        width: 100%;
+    }
+}
